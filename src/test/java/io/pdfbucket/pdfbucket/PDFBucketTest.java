@@ -9,8 +9,6 @@ import org.junit.Test;
 public class PDFBucketTest {
     @Test
     public void createPDFBucketWithValidParams() {
-        Assert.assertEquals("lolo", "lala");
-
         Assert.assertNotNull(buildValidPDFBucket());
     }
 

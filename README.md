@@ -5,9 +5,7 @@ PDFBucket library allows you to integrate easily with the PDFBucket service. Aut
 
 ## Installation
 
-```sh
-$ npm install pdfbucket --save
-```
+TODO
 
 ## Usage
 
@@ -35,6 +33,12 @@ And you get the encryptedUrl using the generateUrl method (To use encryption you
 
 ```java
 String encryptedUrl = pdfBucket.generateUrl("http://example.com", "landscape", "A4", "2px", "0.7");
+```
+
+Also you can pass the plain URL to PDFBucket
+
+```java
+String plainUrl = pdfBucket.generatePlainUrl("http://example.com", "landscape", "A4", "2px", "0.7");
 ```
 
 * Possible values for orientation: "landscape", "portrait"

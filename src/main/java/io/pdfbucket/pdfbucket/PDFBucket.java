@@ -8,13 +8,11 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
+import java.security.*;
 
 /**
  * Created by sanrodari on 6/28/16.
@@ -75,12 +73,28 @@ public final class PDFBucket {
                 sb.append(generateQueryString("margin", margin));
                 sb.append(generateQueryString("zoom", zoom));
                 sb.append(generateQueryString("api_key", apiKey));
+                sb.append(generateQueryString("signature", sign(apiSecret, apiKey, uri, orientation, pageSize, margin, zoom)));
                 sb.append(generateQueryString("uri", uri, true));
 
                 return new URL("https", apiHost, sb.toString()).toString();
             } catch (MalformedURLException e) {
                 throw new PDFBucketException(e);
             }
+        }
+    }
+
+    private String sign(String apiSecret, String apiKey, String uri, String orientation, String pageSize, String margin, String zoom) {
+        try {
+            String params = String.format("%s,%s,%s,%s,%s,%s%s", apiKey, uri, orientation, pageSize, margin, zoom, apiSecret);
+            MessageDigest crypt = MessageDigest.getInstance("SHA-1");
+            crypt.reset();
+            crypt.update(params.getBytes("UTF-8"));
+
+            return new BigInteger(1, crypt.digest()).toString(16);
+        } catch (NoSuchAlgorithmException e) {
+            throw new PDFBucketException(e);
+        } catch (UnsupportedEncodingException e) {
+            throw new PDFBucketException(e);
         }
     }
 

@@ -48,6 +48,7 @@ public class PDFBucketTest {
         Assert.assertNotNull(plainUrl);
         Assert.assertTrue(plainUrl.contains("uri"));
         Assert.assertTrue(plainUrl.contains("joyent"));
+        Assert.assertTrue(plainUrl.contains("signature"));
     }
 
     @Test

@@ -1,14 +1,57 @@
-group 'io.pdfbucket'
-version '0.1.0'
+plugins {
+    id "com.jfrog.bintray" version "1.7"
+}
 
+def artifactVersion = '0.1.2'
+
+group 'io.pdfbucket'
+version artifactVersion
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+    apply plugin: 'java'
+}
 apply plugin: 'java'
 
 sourceCompatibility = 1.6
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+bintray {
+    user = 'sanrodari'
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['MyPublication']
+    pkg {
+        repo = 'pdfbucket'
+        name = 'pdfbucket'
+        userOrg = 'sanrodari'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/pdfbucket/pdfbucket-java.git'
+        version {
+            name = artifactVersion
+            released  = new Date()
+        }
+    }
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            groupId 'io.pdfbucket'
+            artifactId 'pdfbucket'
+            version artifactVersion
+        }
+    }
 }

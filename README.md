@@ -1,6 +1,6 @@
 # PDFBucket   [![Build Status](https://travis-ci.org/pdfbucket/pdfbucket-java.svg?branch=master)](https://travis-ci.org/pdfbucket/pdfbucket-java)
 
-PDFBucket library allows you to integrate easily with the PDFBucket service. Automatically tested against java version 6, 7, and 8.
+PDFBucket library allows you to integrate easily with the PDFBucket service. Automatically tested against Java version 6, 7, and 8.
 
 
 ## Installation

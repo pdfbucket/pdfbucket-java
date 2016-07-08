@@ -1,11 +1,28 @@
-# PDFBucket   [![Build Status](https://travis-ci.org/pdfbucket/pdfbucket-java.svg?branch=master)](https://travis-ci.org/pdfbucket/pdfbucket-java)
+# PDFBucket [![Build Status](https://travis-ci.org/pdfbucket/pdfbucket-java.svg?branch=master)](https://travis-ci.org/pdfbucket/pdfbucket-java)
 
 PDFBucket library allows you to integrate easily with the PDFBucket service. Automatically tested against Java version 6, 7, and 8.
 
 
-## Installation
+## Installation [ ![Download](https://api.bintray.com/packages/sanrodari/pdfbucket/pdfbucket/images/download.svg) ](https://bintray.com/sanrodari/pdfbucket/pdfbucket/_latestVersion)
 
-TODO
+You can install this package via Maven or Gradle using the jcenter repository:
+
+Maven:
+
+```xml
+<dependency>
+  <groupId>io.pdfbucket</groupId>
+  <artifactId>pdfbucket</artifactId>
+  <version>$VERSION</version>
+  <type>pom</type>
+</dependency>
+```
+
+Gradle:
+
+```groovy
+compile 'io.pdfbucket:pdfbucket:$VERSION'
+```
 
 ## Usage
 

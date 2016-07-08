@@ -2,7 +2,7 @@ plugins {
     id "com.jfrog.bintray" version "1.7"
 }
 
-def artifactVersion = '0.1.2'
+def artifactVersion = '0.2.0'
 
 group 'io.pdfbucket'
 version artifactVersion
